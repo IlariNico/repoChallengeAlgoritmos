@@ -3,8 +3,8 @@
 
 const numbers=[27,2,8,12,14,45,16,21,24,28,29,33,37,39,41,46,47,52,60,48]; //i assumme that a secuence is made up of a series of numbers in which every number is greater than the previous one by one ex 1,2,3
 
-var solution=[]
-var actualSolution=[]
+var solution=[];
+var actualSolution=[];
 
 
 function isSolution(solution,actualSolution){
@@ -45,7 +45,7 @@ function clearElements(solution){
     }
 }
 
-function secuenceBackTracking(numbers,index,solution,actualSolution){
+function secuenceBackTracking(index,solution,actualSolution){
     if((index+1)>numbers.length){
         if(isSolution(solution,actualSolution)){
             clearElements(solution);
@@ -54,13 +54,13 @@ function secuenceBackTracking(numbers,index,solution,actualSolution){
     }
     else{
         actualSolution.push(numbers[index]);
-        secuenceBackTracking(numbers,index+1,solution,actualSolution);
+        secuenceBackTracking(index+1,solution,actualSolution);
         actualSolution.pop();
-        secuenceBackTracking(numbers,index+1,solution,actualSolution);
+        secuenceBackTracking(index+1,solution,actualSolution);
     }
 }
 
-secuenceBackTracking(numbers,0,solution,actualSolution);
+secuenceBackTracking(0,solution,actualSolution);
 
 
 
