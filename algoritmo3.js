@@ -1,30 +1,45 @@
+var nodeF = {
+    name: "nodeF",
+    adyacents: []
+};
 
-var nodeD={name:"nodeD",adyacents:[]}
-
-var nodeB={
-    name:"nodeB",
-    adyacents:[{node:nodeD,dist:2}]
-}
-
-var nodeC={
-    name:"nodeC",
-    adyacents:[
-        {node:nodeB,dist:1},{
-        node:nodeD,dist:2}
+var nodeD = {
+    name: "nodeD",
+    adyacents: [
+    { node: nodeF, dist: 2 }
     ]
-}
+};
 
-var nodeA={
-    name:"nodeA",
-    adyacents:[
-        {
-        node:nodeB,dist:3},{
-        node:nodeC,dist:1},{
-        node:nodeD,dist:5}
-            ]
-    }
+var nodeE = {
+    name: "nodeE",
+    adyacents: [
+    { node: nodeF, dist: 3 }
+    ]
+};
 
-var graph=[nodeA,nodeB,nodeC,nodeD]
+var nodeC = {
+    name: "nodeC",
+    adyacents: [
+    { node: nodeD, dist: 1 },
+    { node: nodeE, dist: 5 }
+    ]
+};
+
+var nodeB = {
+    name: "nodeB",
+    adyacents: [
+    { node: nodeD, dist: 4 }
+    ]
+};
+
+var nodeA = {
+    name: "nodeA",
+    adyacents: [
+    { node: nodeB, dist: 2 },
+    { node: nodeC, dist: 3 }
+    ]
+};
+var graph = [nodeA, nodeB, nodeC, nodeD, nodeE, nodeF];
 
 function containsAll(graph,res){
     
@@ -69,12 +84,12 @@ function dijkstra(graph,nodeOrigin){
     let n=auxList.find((r)=>r.node===nodeOrigin);
     n.distance=0;
     let sol=[];
-    console.log(containsAll(graph,sol))
+    
     while(!containsAll(graph,sol)){
         
         let min=getMinDistance(auxList,sol);
         sol.push(min);
-        
+        console.log
         
         for(let v of min.node.adyacents){
             if(!sol.includes(v)){
